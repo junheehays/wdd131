@@ -1,0 +1,1 @@
+setTimeout(() => console.log("Hi after 1 second"), 1000);
