@@ -1,0 +1,260 @@
+/*
+ * ----------------------------------------------------
+ * FONT IMPORTS (New: Mooli for headlines)
+ * ----------------------------------------------------
+ */
+@import url("https://fonts.googleapis.com/css2?family=Mooli&display=swap");
+
+/*
+ * ----------------------------------------------------
+ * 1. CSS RESET & BOX MODEL
+ * ----------------------------------------------------
+ * A modern reset to ensure consistent styling across all browsers.
+ */
+*, *::before, *::after {
+  /* This is the single most important global rule for layout consistency. 
+     It makes elements' widths and heights include padding and border. */
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+img {
+	max-width: 100%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* * ----------------------------------------------------
+ * 2. CSS CUSTOM PROPERTIES (VARIABLES)
+ * ----------------------------------------------------
+ * Defining key values on the :root element makes them globally available
+ * and easy to change in one central location.
+ */
+:root {
+  /* -- COLORS -- */
+--primary-color: #52489c;
+--secondary-color: #59c3c3;
+--accent-color: #f45b69;
+--color-background-light: #f3f4f6; /* Very light gray */
+--color-background-dark: #1f2937;  /* Dark gray/Blue - For headers/footers */
+--text-dark: #333;
+--text-light: #ebebeb;
+--primary-font: Arial, Helvetica,sans-serif;
+--secondary-font: Mooli, san-serif;  
+  /* -- TYPOGRAPHY (UPDATED) -- */
+--font-family-body: Arial, Helvetica, sans-serif; /* Changed to Arial, Helvetica, sans-serif */
+--font-family-headline: 'Mooli', sans-serif; /* Changed to Mooli */
+  
+  /* Setting the base font size for the root (1rem = 16px) */
+  font-size: 100%; 
+}
+
+
+/* * ----------------------------------------------------
+ * 3. GLOBAL BASE STYLES (HTML, BODY)
+ * ----------------------------------------------------
+ */
+
+/* The base font size is increased (16px * 1.125 = 18px) for better readability. */
+body {
+  font-family: var(--font-family-body);
+  font-size: 1.2em; /* Increased base size (18px) */
+  color: var(--color-text-main);
+  background-color: var(--color-background-light);
+  line-height: 1.6; /* Optimal line height for readability */
+  -webkit-font-smoothing: antialiased; /* For smoother text rendering */
+}
+
+/* * ----------------------------------------------------
+ * 4. TYPOGRAPHY STYLES (HEADLINES)
+ * ----------------------------------------------------
+ * Applying the headline font and primary color.
+ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headline);
+  color: var(--color-text-main); /* Headlines are dark, same as body text */
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  line-height: 1.2;
+}
+
+/* * ----------------------------------------------------
+ * 5. LINK STYLES
+ * ----------------------------------------------------
+ * Links are a primary interaction element and need clear global styles.
+ */
+a {
+  color: var(--primary-color); /* Primary blue color for links */
+  text-decoration: none; /* Removes the default underline */
+  transition: color 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+a:link,
+a:visited {
+    color: var(--accent-color);
+}
+
+a:hover,
+a:focus {
+  color: var(--secondary-color); /* Changes to the accent color on hover */
+  text-decoration: underline; /* Adds underline back on hover for clarity */
+}
+
+
+/* * ----------------------------------------------------
+ * 6. GLOBAL LAYOUT STYLES (HEADER & FOOTER)
+ * ----------------------------------------------------
+ * Defining standard look for primary structural elements.
+ */
+
+header {
+  background-color: var(--color-background-dark); /* Dark background */
+  color: var(--text-light); /* Light text for contrast */
+  padding: 1rem 0; /* Vertical padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+footer {
+  background-color: var(--color-background-dark); /* Dark background */
+  color: var(--text-light); /* Light text for contrast */
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 3rem; /* Space above the footer */
+  font-size: 0.9rem; /* Slightly smaller text for copyright info */
+}
+
+/* Ensure text elements inside the dark header/footer use the light text color */
+header a, footer a,
+header p, footer p {
+  color: var(--text-light);
+}
+
+button {
+  /* Resets the default styling (background, border, padding, text-align, etc.) */
+  all: unset; 
+  /* Fallback for older browsers (though 'all' is widely supported) */
+  -webkit-appearance: none;
+  appearance: none; 
+  
+  /* Resetting specific properties ensures maximum compatibility */
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer; /* Keep the pointer cursor to indicate interactivity */
+  line-height: inherit;
+  text-align: inherit;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media screen and (min-width: 700px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .myButton {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+.side-menu {
+  width: 200px; /* Keep fixed width for the vertical layout */
+  padding: 20px 0;
+  color: white;
+}
+
+/* Remove default list styling */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* coolpics.css (Modified section) */
+
+/* The following rules ensure the links are white in ALL viewports */
+.side-menu li {
+  text-align: center;
+  padding: 5px 0;
+  color: var(--text-light); /* ADDED: This makes the list text white everywhere */
+}
+
+/* Make the link itself slightly easier to see without the underline */
+.side-menu a {
+  text-decoration: none; /* Remove the underline */
+  color: var(--text-light); /* ADDED: This makes the link text white everywhere */
+}
+
+/* Optional: Add hover for the horizontal bar */
+.side-menu a:hover {
+  text-decoration: underline; /* Add underline back on hover */
+  color: var(--text-light);
+}
+
+/* ------------------------------------------------------------------ */
+
+/* MEDIA QUERY: Apply these styles only when the viewport is 600px wide or greater */
+@media (min-width: 600px) {
+  /*
+   * 1. Change the overall menu container to full width and change the background
+   * color to purple only for the bottom bar where links are.
+   */
+  .side-menu {
+    width: 100%; /* Take up the full width of the screen */
+    padding: 0;
+  }
+
+  /* 2. Hide the 'Menu' heading on wider screens */
+  .side-menu h2 {
+    display: none;
+  }
+
+  /*
+   * 3. Apply Flexbox to the UL (the parent) to align children horizontally.
+   */
+  .side-menu ul {
+    display: flex; /* Activate Flexbox */
+    justify-content: center; /* Center the entire set of links horizontally */
+    padding: 10px 0; /* Add top/bottom padding to the bar */
+  }
+
+  /*
+   * 4. Change styling for LI (the children) for horizontal display.
+   */
+  .side-menu li {
+    padding: 0 15px; /* Add horizontal spacing between links */
+    /* Removed the color: var(--text-light); line from here */
+  }
+  
+  /* Removed the .side-menu a block from here */
+  
+  /* Optional: Add hover for the horizontal bar */
+  /* Kept the hover color rule here, though it's now redundant, 
+     it ensures the hover state is always the light text color. */
+  .side-menu a:hover {
+    text-decoration: underline;
+    color: var(--text-light);
+  }
+}
