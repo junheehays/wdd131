@@ -305,3 +305,70 @@ button {
 
   /* ... (Rest of the @media block remains the same) ... */
 }
+
+
+
+
+
+/* ----------------------------------------------------
+ * 8. MODAL/DIALOG STYLES (Centering the Modal)
+ * ----------------------------------------------------
+ */
+
+/* Style for the native <dialog> element */
+#imageModal {
+    /* The dialog is centered by default when using dialog.showModal(), 
+       but setting the dimensions helps control its size. */
+    border: none;
+    padding: 0;
+    background: transparent; /* Makes the dialog background transparent, so only the content block is visible */
+    /* Remove the default black backdrop for a custom one if needed, but the default is usually fine. */
+}
+
+/* Style for the content container inside the dialog */
+.modal-content {
+    /* Use a semi-transparent dark background for the modal content block */
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    position: relative; /* Needed for absolute positioning of the close button */
+    max-width: 90vw; /* Make sure it doesn't take up too much width */
+    max-height: 90vh; /* Make sure it doesn't take up too much height */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* To keep the content within the bounds */
+}
+
+/* Style for the full image within the modal */
+#fullImage {
+    /* Reset image styling to allow for natural, non-square display */
+    width: auto;
+    height: auto;
+    max-width: 100%; /* Ensure the image scales down on smaller screens */
+    max-height: 75vh; /* Keep the image from being too tall */
+    object-fit: contain; /* Ensure the full image is visible without cropping */
+    display: block; /* Removes any baseline spacing issues */
+    margin: 0 auto; /* Center the image horizontally within the modal-content */
+}
+
+/* Style the close button for better visibility and positioning */
+#closeModalBtn {
+    position: absolute;
+    top: -30px; /* Move it up outside the dark content block */
+    right: 0;
+    color: var(--text-light); /* White 'X' */
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    z-index: 10; /* Ensure it's on top of the image */
+    line-height: 1; /* Keep the button square */
+    padding: 0 10px;
+}
+
+/* Style the image caption */
+#imageCaption {
+    color: var(--text-light); /* White text for the caption */
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+}
