@@ -258,3 +258,50 @@ button {
     color: var(--text-light);
   }
 }
+
+
+/* coolpics.css (Add this section after .side-menu a:hover) */
+
+/* ----------------------------------------------------
+ * 7. MENU TOGGLE STYLES (Mobile First: Hidden by default)
+ * ----------------------------------------------------
+ */
+
+/* Hide the UL list by default on small screens */
+.side-menu ul {
+    display: none; 
+    /* The other styling for the UL will still apply when visible */
+}
+
+/* This class will be toggled by JavaScript to show the menu */
+.side-menu ul.open {
+    display: block; 
+    /* Ensures the list items stack vertically (default UL behavior) */
+    /* Remove the display: flex; from the UL when it's open on mobile */
+}
+
+/* Ensure the button is visible on mobile (it was already .myButton) */
+.myButton {
+    display: block !important; /* Ensure the button is visible on all small screens */
+}
+
+
+/* ------------------------------------------------------------------ */
+
+/* MEDIA QUERY: Apply these styles only when the viewport is 600px wide or greater */
+@media (min-width: 600px) {
+  /* ... (Existing styles) ... */
+
+  /*
+   * 3. Apply Flexbox to the UL (the parent) to align children horizontally.
+   * *** CRITICAL: This overrides the 'display: none' from the mobile styles
+   * and ensures the menu is always visible and horizontal on desktop. ***
+   */
+  .side-menu ul {
+    display: flex !important; /* Activate Flexbox and ensure it's always visible */
+    justify-content: center; /* Center the entire set of links horizontally */
+    padding: 10px 0; /* Add top/bottom padding to the bar */
+  }
+
+  /* ... (Rest of the @media block remains the same) ... */
+}

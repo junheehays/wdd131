@@ -7,13 +7,14 @@
     <meta name="description" content="Cool pictures">
     <meta name="author" content="Junhee Hays">
     <link rel="stylesheet" href="coolpics.css">
+    <!-- coolpics.js will handle the modal logic -->
     <script src="coolpics.js" defer></script>
 </head>
 <body>
     <header><h1>Cool Pics 📷</h1>
         <nav class="side-menu">
-            <h2><button class="myButton" id="myButton">Menu</button></h2>
-            <ul>
+            <h2><button class="myButton menu-toggle" id="myButton" onclick="toggleMenu()">Menu</button></h2>
+            <ul id="menuList"> 
                 <li><a href="#">Home</a></li>
                 <li><a href="#">People</a></li>
                 <li><a href="#">Places</a></li>
@@ -26,34 +27,51 @@
         <h1>Current Work</h1>
         <section class="gallery">
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 1">
+                <!-- Added data-full attribute with the path to the high-res image -->
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 1)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 2">
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 2)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 3">
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 3)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 4">
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 4)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 5">
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 5)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 6">
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 6)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 7">
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 7)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 8">
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 8)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
             <figure>
-                <img src="norris-sm.jpeg" alt="picture 9">
+                <img src="norris-sm.jpeg" alt="Geothermal area with steam vents and pools (Image 9)" data-full="norris-full.jpeg" onclick="openModal(this)">
             </figure>
         </section>
     </main>
+    
+    <!-- New: The Dialog (Modal) Structure -->
+    <dialog id="imageModal">
+        <div class="modal-content">
+            <!-- Close button - calls closeModal() -->
+            <button id="closeModalBtn" onclick="closeModal()" aria-label="Close image viewer">
+                &times; <!-- HTML entity for the 'x' symbol -->
+            </button>
+            <!-- Image placeholder (gets updated by JS) -->
+            <img id="fullImage" src="" alt="Full size image">
+            <!-- Caption placeholder -->
+            <p id="imageCaption"></p>
+        </div>
+    </dialog>
+    <!-- End of New Modal Structure -->
+    
     <footer>©2023 Not a real site 😀</footer>
 </body>
 </html>
