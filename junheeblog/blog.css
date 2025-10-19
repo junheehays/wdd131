@@ -1,0 +1,309 @@
+/* Custom styles to match the mockup's font and line colors */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap');
+
+/* Use Playfair Display for the main header */
+.header-font {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Use Inter for everything else, setting base colors */
+body {
+    font-family: 'Inter', sans-serif;
+    color: #4a4a4a; /* Slightly darker than black for a softer look */
+    background-color: #fafafa;
+    padding: 1rem; /* p-4 equivalent */
+}
+
+/* Responsive padding for body (md:p-8 lg:px-24 equivalent) */
+@media (min-width: 768px) {
+    body {
+        padding: 2rem; /* md:p-8 */
+    }
+}
+@media (min-width: 1024px) {
+    body {
+        padding-left: 6rem; /* lg:px-24 */
+        padding-right: 6rem;
+    }
+}
+
+/* Custom dividing lines from the mockup */
+.custom-divider {
+    border-top: 2px solid #D1C4B5; /* Light brown/tan color */
+    width: 100%;
+    max-width: 64rem; /* max-w-4xl equivalent */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5rem; /* my-6 equivalent */
+    margin-bottom: 1.5rem;
+}
+
+/* Specific styling for the metadata column and filters column borders */
+.post-metadata-col {
+    border-right: 1px solid #D1C4B5;
+    padding-right: 1rem; /* pr-4 equivalent */
+}
+
+.filters-col {
+    border-left: 1px solid #D1C4B5;
+    min-height: 500px; /* Ensure lines extend down */
+    padding: 1rem; /* p-4 equivalent */
+}
+
+/* Ensure images are responsive within their container */
+.article-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem; /* subtle rounding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; /* w-full */
+    object-fit: cover; /* object-cover */
+}
+
+/* Link colors matching the mockup's subtle reds/pinks */
+.nav-link:hover, .article-title:hover {
+    color: #794E4E !important; /* Use !important to override the inline color on hover for consistency */
+}
+
+/* Utility to set header text color, as it was a class on H1 */
+.text-custom-header {
+    color: #333;
+}
+
+/* --- Layout and Structure Replacements for Tailwind --- */
+
+/* Header styles */
+.site-header {
+    text-align: center; /* text-center */
+    margin-bottom: 2rem; /* mb-8 md:mb-12 */
+}
+@media (min-width: 768px) {
+    .site-header {
+        margin-bottom: 3rem; /* md:mb-12 */
+    }
+}
+
+.site-title {
+    font-size: 3rem; /* text-5xl equivalent */
+    font-weight: 400; /* font-normal */
+}
+@media (min-width: 768px) {
+    .site-title {
+        font-size: 3.75rem; /* md:text-6xl equivalent */
+    }
+}
+
+/* Navigation styles */
+.site-nav {
+    display: flex; /* flex */
+    justify-content: flex-end; /* justify-end */
+    max-width: 64rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.5rem; /* py-2 */
+    padding-bottom: 0.5rem;
+}
+
+.nav-link {
+    font-size: 1.125rem; /* text-lg */
+    color: #8B4513; /* Custom color used in index.html */
+    margin-left: 0.75rem; /* mx-3/ml-3/mr-0 */
+    margin-right: 0.75rem;
+    transition: color 0.2s ease-in-out; /* transition-colors duration-200 */
+}
+.site-nav .nav-link:last-child {
+    margin-right: 0;
+}
+
+/* Main content area */
+.main-content {
+    max-width: 64rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid layout for articles and filters (grid grid-cols-1 md:grid-cols-12 gap-6 equivalent) */
+.content-grid {
+    display: flex; /* Fallback for single column */
+    flex-direction: column;
+    gap: 1.5rem; /* gap-6 equivalent */
+}
+
+@media (min-width: 768px) {
+    .content-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr)); /* 12-column grid */
+    }
+
+    .articles-section {
+        grid-column: span 9 / span 9; /* md:col-span-9 */
+    }
+
+    .filters-sidebar {
+        grid-column: span 3 / span 3; /* md:col-span-3 */
+    }
+}
+
+
+/* Article Item Structure */
+.article-item {
+    margin-bottom: 2.5rem; /* mb-10 */
+    padding-top: 1rem; /* pt-4 */
+    border-top: 2px solid #D1C4B5; /* custom-divider */
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr)); /* grid grid-cols-12 */
+    gap: 1rem; /* gap-4 */
+}
+
+/* Article Metadata Column */
+.metadata-col {
+    grid-column: span 12 / span 12; /* Default: full width */
+    text-align: left; /* Default: left align */
+    padding-right: 0;
+    margin-bottom: 0.5rem;
+}
+.metadata-date {
+    color: #5d5d5d; /* text-gray-600 */
+    margin-bottom: 0.25rem; /* mb-1 */
+}
+.metadata-detail {
+    color: #3d3d3d; /* text-gray-800 */
+}
+.metadata-genre {
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+
+/* Article Content Column */
+.content-col {
+    grid-column: span 12 / span 12; /* Default: full width */
+    padding-left: 0;
+}
+
+@media (min-width: 768px) {
+    .metadata-col {
+        grid-column: span 3 / span 3; /* col-span-3 */
+        text-align: right; /* text-right */
+        border-right: 1px solid #D1C4B5; /* post-metadata-col */
+        margin-bottom: 0;
+    }
+    .content-col {
+        grid-column: span 9 / span 9; /* col-span-9 */
+        padding-left: 1rem; /* pl-4 */
+    }
+}
+
+/* Article Title */
+.article-title-link {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 0.5rem; /* mb-2 */
+    color: #663333; /* New, accessible color */
+    transition: color 0.2s ease-in-out;
+}
+
+/* Image and Description Container */
+.article-body-container {
+    display: flex; /* flex */
+    flex-direction: column; /* flex-col */
+    align-items: flex-start; /* items-start */
+    gap: 1rem; /* space-y-4 */
+}
+
+@media (min-width: 768px) {
+    .article-body-container {
+        flex-direction: row; /* md:flex-row */
+        gap: 1.5rem; /* md:space-x-6 (since we use gap for both) */
+        margin-top: 0; /* md:space-y-0 */
+    }
+}
+
+/* Image Wrapper */
+.image-wrapper {
+    width: 100%; /* w-full */
+    flex-shrink: 0; /* flex-shrink-0 */
+}
+@media (min-width: 768px) {
+    .image-wrapper {
+        width: calc(100% / 3); /* md:w-1/3 */
+    }
+}
+
+/* Description Wrapper */
+.description-wrapper {
+    width: 100%; /* w-full */
+}
+@media (min-width: 768px) {
+    .description-wrapper {
+        width: calc(200% / 3); /* md:w-2/3 */
+    }
+}
+
+/* Description Text */
+.description-text {
+    font-size: 1rem; /* text-base */
+    color: #4a4a4a; /* text-gray-700 (using body base color) */
+}
+
+.read-more-link {
+    font-weight: 500; /* font-medium */
+    font-size: 0.875rem; /* text-sm */
+    color: #4a4a4a; /* Specific color from index.html */
+    white-space: nowrap; /* whitespace-nowrap */
+    transition: color 0.2s ease-in-out;
+}
+.read-more-link:hover {
+    color: #663333; /* New, accessible color */
+}
+
+a:focus, select:focus {
+    /* Ensure the default browser outline is visible and clear */
+    outline: 2px solid #D1880B; /* Use the star-rating color for high visibility */
+    outline-offset: 2px;
+}
+
+/* Filter Sidebar Styles */
+.filter-header {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.filter-group {
+    margin-bottom: 1rem; /* space-y-4 is now handled by margin-bottom on each div */
+}
+.filter-group:last-child {
+    margin-bottom: 0;
+}
+
+.filter-label {
+    display: block; /* block */
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 500; /* font-medium */
+    color: #4a4a4a; /* text-gray-700 (using body base color) */
+    margin-bottom: 0.25rem; /* mb-1 */
+}
+
+.filter-select {
+    width: 100%; /* w-full */
+    border: 1px solid #ccc; /* border border-gray-300 */
+    border-radius: 0.25rem; /* rounded-md */
+    padding: 0.5rem; /* p-2 */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+    /* Mimic focus ring */
+    outline: none;
+}
+
+/* Star Rating */
+.star-rating span {
+    color: #D1880B; /* text-amber-500 */
+}
+
+/* Loading Message */
+#loading-message {
+    text-align: center; /* text-center */
+    color: #6b7280; /* text-gray-500 */
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Read for Fun</title>
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body class=""> <header class="site-header">
+        <h1 class="header-font site-title text-custom-header">
+            Kids Read For Fun
+        </h1>
+        <div class="custom-divider"></div>
+        
+        <nav class="site-nav" role="navigation">
+            <a href="#" class="nav-link">About</a>
+            <a href="#" class="nav-link">Archive</a>
+            <a href="#" class="nav-link nav-link-last">Search</a>
+        </nav>
+    </header>
+
+    <main class="main-content" role="main">
+        <div class="content-grid">
+
+            <section id="articles-container" class="articles-section">
+                <p id="loading-message">Loading articles...</p>
+            </section>
+
+            <aside class="filters-sidebar filters-col" role="complementary">
+                <h2 class="filter-header">Filters will go here</h2>
+                
+                <div class="filter-group">
+                    <label for="sort" class="filter-label">Sort:</label>
+                    <select id="sort" class="filter-select">
+                        <option>Newest</option>
+                        <option>Oldest</option>
+                        <option>Highest Rating</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="age" class="filter-label">Age:</label>
+                    <select id="age" class="filter-select">
+                        <option>All Ages</option>
+                        <option>10-14</option>
+                        <option>12-16</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="genre" class="filter-label">Genre:</label>
+                    <select id="genre" class="filter-select">
+                        <option>All Genres</option>
+                        <option>Fantasy</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="rating" class="filter-label">Rating:</label>
+                    <select id="rating" class="filter-select">
+                        <option>Any Rating</option>
+                        <option>⭐⭐⭐⭐ (4 Stars)</option>
+                    </select>
+                </div>
+                
+            </aside>
+        </div>
+    </main>
+
+    <script>
+        // --- 1. EMBEDDED JAVASCRIPT DATA FROM blog.js ---
+        // (Data remains the same)
+        const articles = [
+            {
+                id: 1,
+                title: 'Septimus Heap Book One: Magyk',
+                date: 'July 5, 2022',
+                description:
+                    'If you enjoy stories about seventh sons of seventh sons and magyk this is the book for you.',
+                imgSrc: 'https://upload.wikimedia.org/wikipedia/en/5/5f/Magkycover2.jpg',
+                imgAlt: 'Book cover for Septimus Heap 1',
+                ages: '10-14',
+                genre: 'Fantasy',
+                stars: '****' // Use unicode stars in the renderer
+            },
+            {
+                id: 2,
+                title: 'Magnus Chase Book One: Sword of Summer',
+                date: 'December 12, 2021',
+                description:
+                    'The anticipated new novel by Rick Riordan. After Greek mythology (Percy Jackson), Greek/Roman (Heroes of Olympus), and Egyptian (Kane Chronicles), Rick decides to try his hand with Norse Mythology, and the end result is good.',
+                imgSrc:
+                    'https://books.google.com/books/content/images/frontcover/xWuyBAAAQBAJ?fife=w300',
+                imgAlt: 'Book cover for Magnus Chase 1',
+                ages: '12-16',
+                genre: 'Fantasy',
+                stars: '⭐⭐⭐⭐'
+            }
+        ];
+
+        // Helper function to convert star characters or text to a consistent display
+        const getStarHtml = (stars) => {
+            // Apply star-rating class for consistent styling
+            if (stars === '****') {
+                return '<span class="star-rating">⭐⭐⭐⭐</span>';
+            }
+            return `<span class="star-rating">${stars}</span>`;
+        };
+        
+        // Function to render all articles
+        function renderArticles() {
+            const container = document.getElementById('articles-container');
+            const loadingMessage = document.getElementById('loading-message');
+            
+            // Hide the loading message once we have data
+            if (loadingMessage) {
+                loadingMessage.style.display = 'none';
+            }
+
+            // Clear existing content
+            container.innerHTML = ''; 
+
+            articles.forEach(article => {
+                // All classes here are now custom classes defined in blog.css
+                const articleHtml = `
+                    <article class="article-item">
+                        <div class="article-grid">
+                            
+                            <div class="metadata-col post-metadata-col">
+                                <p class="metadata-date">${article.date}</p>
+                                <p class="metadata-detail">${article.ages}</p>
+                                <p class="metadata-detail metadata-genre">${article.genre}</p>
+                                <p>${getStarHtml(article.stars)}</p>
+                            </div>
+
+                            <div class="content-col">
+                                <h2 class="article-title">
+                                    <a href="#" class="article-title-link">${article.title}</a>
+                                </h2>
+                                
+                                <div class="article-body-container">
+                                    <div class="image-wrapper">
+                                        <img 
+                                            src="${article.imgSrc}" 
+                                            alt="${article.imgAlt}" 
+                                            class="article-image" 
+                                            onerror="this.onerror=null; this.src='https://placehold.co/300x450/C28585/ffffff?text=Book+Cover'"
+                                        >
+                                    </div>
+                                    
+                                    <div class="description-wrapper">
+                                        <p class="description-text">
+                                            ${article.description} 
+                                            <a href="#" class="read-more-link" aria-label="Read More about ${article.title}">Read More...</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                `;
+                container.insertAdjacentHTML('beforeend', articleHtml);
+            });
+        }
+
+        // --- 2. INITIALIZATION ---
+        // Run the rendering function when the page loads
+        document.addEventListener('DOMContentLoaded', renderArticles);
+
+    </script>
+</body>
+</html>
