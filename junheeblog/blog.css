@@ -31,7 +31,6 @@ body {
 .custom-divider {
     border-top: 2px solid #D1C4B5; /* Light brown/tan color */
     width: 100%;
-    max-width: 64rem; /* max-w-4xl equivalent */
     margin-left: auto;
     margin-right: auto;
     margin-top: 1.5rem; /* my-6 equivalent */
@@ -149,7 +148,6 @@ body {
 .article-item {
     margin-bottom: 2.5rem; /* mb-10 */
     padding-top: 1rem; /* pt-4 */
-    border-top: 2px solid #D1C4B5; /* custom-divider */
 }
 
 .article-grid {
@@ -162,7 +160,6 @@ body {
 .metadata-col {
     grid-column: span 12 / span 12; /* Default: full width */
     text-align: left; /* Default: left align */
-    padding-right: 0;
     margin-bottom: 0.5rem;
 }
 .metadata-date {
@@ -208,8 +205,8 @@ body {
 /* Image and Description Container */
 .article-body-container {
     display: flex; /* flex */
-    flex-direction: column; /* flex-col */
     align-items: flex-start; /* items-start */
+    flex-direction: column; /* flex-col */
     gap: 1rem; /* space-y-4 */
 }
 
@@ -306,4 +303,34 @@ a:focus, select:focus {
 #loading-message {
     text-align: center; /* text-center */
     color: #6b7280; /* text-gray-500 */
+}
+
+
+
+.metadata-col {
+    padding-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.metadata-date {
+    font-size: 1.2rem;
+}
+
+.article-body-container .image-wrapper {
+    margin: auto; /* Centers horizontally within a flex container */
+}
+
+
+@media (min-width: 768px) {
+    .article-body-container {
+        /* Remove or comment out the row setting to go back to flex-col default */
+        /* flex-direction: row; */ 
+        flex-direction: column; /* Force it to stack vertically */
+        gap: 1rem; /* Adjust gap for stacking */
+        margin-top: 0; 
+    }
+    
+    .description-wrapper {
+        width: 100%; /* Make the description wrapper full width */
+    }
 }
