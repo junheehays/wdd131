@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    color: #111;
+}
+
+
+
+
+.header {
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo img{
+  width: 50px;
+}
+
+.logo h1{
+    font-family: 'Coming Soon', cursive;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.search-container input {
+    width: 60%;
+    max-width: 450px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #aaa;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    background: white;
+    border: 2px solid #aaa;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-container button img {
+    width: 22px;
+}
+
+/* RECIPE CARD */
+.recipe-card {
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    display: flex;
+    background: #fff;
+    overflow: hidden;
+}
+
+.image-box {
+    width: 50%;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recipe-info {
+    padding: 20px;
+    width: 50%;
+}
+
+.tag {
+    background: #eee;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 1.7rem;
+    color: #3da9fc;
+    margin: 10px 0 5px;
+}
+
+.stars {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.description {
+    line-height: 1.4;
+    font-size: 1rem;
+}
+
+.footer {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 0.6em;
+}
+
+.footer .icons img {
+    width: 35px;
+    margin: 0 8px;
+}
+
+.credit {
+    font-size: 0.6rem;
+    margin-top: 10px;
+    color: #555;
+}
+
+
+/* ------------------------------ */
+/* RESPONSIVE — MOBILE LAYOUT     */
+/* ------------------------------ */
+@media (max-width: 768px) {
+
+    .recipe-card {
+        flex-direction: column;
+    }
+
+    .image-box,
+    .recipe-info {
+        width: 100%;
+    }
+
+    .image-box img {
+        height: auto;
+    }
+
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .search-container input {
+        width: 75%;
+    }
+}
