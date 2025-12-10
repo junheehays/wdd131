@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Purse | Chanel & Marc Jacobs</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <img src="logo.png" alt="My Purse logo" class="logo" />
+      <div class="brand-text">
+        <p class="tagline">Love for Purse</p>
+        <h1>My Purse</h1>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="index.html" class="active">Home</a>
+      <!-- these can point to future child pages -->
+      <a href="chanel.html">Chanel</a>
+      <a href="stam.html">Marc Jacobs</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO TEXT COMES FROM main.js -->
+    <section class="hero">
+      <h2 id="hero-title"></h2>
+      <p id="hero-text"></p>
+    </section>
+
+    <!-- PURSE CARDS COME FROM main.js -->
+    <section id="purse-list" class="purse-list"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> My Purse • Love for Purse</p>
+  </footer>
+
+  <!-- main.js will insert all the text/content -->
+  <script src="main.js"></script>
+</body>
+</html>
