@@ -23,7 +23,7 @@ const purses = [
     id: "stam",
     name: "Marc Jacobs Stam Satchel",
     brandLogo: "marcjacobslogo.png",
-    image: "stam.png",
+    image: "stam.jpg",
     imageAlt: "Black Marc Jacobs Stam satchel with gold chain",
     description:
       "The Marc Jacobs Stam Satchel features a soft, quilted shape, chunky chain, " +
@@ -58,6 +58,10 @@ function renderPurses() {
         src="${purse.image}"
         alt="${purse.imageAlt}"
         class="purse-image"
+        width="800"
+        height="600"
+        loading="lazy"
+        decoding="async"
       />
 
       <div class="purse-header">
@@ -66,6 +70,10 @@ function renderPurses() {
           src="${purse.brandLogo}"
           alt="${purse.name} brand logo"
           class="brand-logo"
+          width="120"
+          height="40"
+          loading="lazy"
+          decoding="async"
         />
       </div>
 
